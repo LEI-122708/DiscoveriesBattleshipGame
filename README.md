@@ -2,6 +2,8 @@
 
 Basic academic version of Battleship game to build upon.
 
+<img width="799" height="657" alt="image" src="https://github.com/user-attachments/assets/07341a44-1356-486f-9d8b-baf479980332" />
+
 ---
 
 ## Group LEI
@@ -27,12 +29,7 @@ Basic academic version of Battleship game to build upon.
 
 --- 
 
-## Links to Wikipedia about ships existing during the Age of Discovery
-
-https://pt.wikipedia.org/wiki/Caravela
-https://pt.wikipedia.org/wiki/Nau
-https://pt.wikipedia.org/wiki/Gale%C3%A3o
-# Battleships — Game Rules
+# Game Rules
 
 ## Objective
 
@@ -81,4 +78,12 @@ A player may not attack the same square more than once.
 The game ends when one player has sunk **all of the opponent's ships**.
 
 The player who sinks the entire opposing fleet first wins the game.
+
+---
+
+## Links to Wikipedia about ships existing during the Age of Discovery
+
+https://pt.wikipedia.org/wiki/Caravela
+https://pt.wikipedia.org/wiki/Nau
+https://pt.wikipedia.org/wiki/Gale%C3%A3o
 
