@@ -6,13 +6,26 @@ Basic academic version of Battleship game to build upon.
 
 ## Group LEI
 
+| Name | Student Number |
 | :--- | :--- |
-| Hugo | LEI_122708 |
-| Mafalda | LEI_122714 |
-| Kseniya | LEI_145883 |
-| Lukasz | LEI_145884 |
+| Hugo | LEI122708 |
+| Mafalda | LEI122714 |
+| Kseniya | LEI145883 |
+| Lukasz | LEI145884 |
 
 ---
+
+# Types of Ships
+
+| Batalha Naval | Descobrimentos | English | Dimensão | #Navios |
+| :--- | :--- | :--- | :---: | :---: |
+| Porta-aviões | Galeão | Galleon | 5 | 1 |
+| Navio de 4 canhões | Fragata | Frigate | 4 | 1 |
+| Navio de 3 canhões | Nau | Carrack | 3 | 2 |
+| Navio de 2 canhões | Caravela | Caravel | 2 | 3 |
+| Submarino | Barca | Barge | 1 | 4 |
+
+--- 
 
 ## Links to Wikipedia about ships existing during the Age of Discovery
 
