@@ -76,3 +76,8 @@ The player who sinks the entire opposing fleet first wins the game.
 
 ---
 
+## Links to Wikipedia about ships existing during the Age of Discovery
+
+https://pt.wikipedia.org/wiki/Caravela
+https://pt.wikipedia.org/wiki/Nau
+https://pt.wikipedia.org/wiki/Gale%C3%A3o
