@@ -2,9 +2,11 @@
 
 Basic academic version of Battleship game to build upon.
 
+<img width="799" height="657" alt="image" src="https://github.com/user-attachments/assets/07341a44-1356-486f-9d8b-baf479980332" />
+
 ---
 
-## Grupo LEI
+## Group LEI
 
 - Hugo: LEI_122708
 - Mafalda: LEI_122714
@@ -12,6 +14,8 @@ Basic academic version of Battleship game to build upon.
 - Lukasz: LEI_145884
 
 ---
+
+# Types of Ships
 
 | Batalha Naval | Descobrimentos | English | Dimensão | #Navios |
 | :--- | :--- | :--- | :---: | :---: |
