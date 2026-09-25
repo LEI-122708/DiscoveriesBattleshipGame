@@ -1,42 +1,48 @@
-/**
- *
- */
 package iscteiul.ista.battleship;
 
 import java.util.Scanner;
-
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Utility class containing execution logic for the various project tasks/stages (Tasks A, B, C, and D).
+ * Facilitates testing for ship creation, fleet assembly, and combat loop simulations.
+ *
+ * @author Battleship Team
+ * @version 1.0
+ */
 public class Tasks {
+
+    /** Logger instance for logging application status and test outputs. */
     private static final Logger LOGGER = LogManager.getLogger();
 
+    /** Fixed number of shots per firing volley. */
     private static final int NUMBER_SHOTS = 3;
 
+    /** Farewell message displayed when quitting the program. */
     private static final String GOODBYE_MESSAGE = "Bons ventos!";
 
-    /**
-     * Strings to be used by the user
-     */
+    /** Command string to initiate building a new fleet. */
     private static final String NOVAFROTA = "nova";
+
+    /** Command string to forfeit/quit the game. */
     private static final String DESISTIR = "desisto";
+
+    /** Command string to fire a volley of shots. */
     private static final String RAJADA = "rajada";
+
+    /** Command string to display valid recorded shots. */
     private static final String VERTIROS = "ver";
+
+    /** Command string to reveal the complete map/fleet layout (cheat mode). */
     private static final String BATOTA = "mapa";
+
+    /** Command string to print the current status of the fleet. */
     private static final String STATUS = "estado";
 
-
-    /////////////////////////////////////////////////////////////////////////////
-    // hereafter one may find some code that can be converted to automatic tests,
-    // as long as appropriate changes are made. It also shows that we should
-    // develop our code incrementally e.g. first the ships, then the fleet,
-    // then some rule checking, then dealing with firing and so on
-    /////////////////////////////////////////////////////////////////////////////
-
     /**
-     * This task tests the building up of ships: For each ship, reads positions and
-     * indicates whether the ship occupies each one of such positions or not
+     * Executes Task A: Tests individual ship building by reading ship data
+     * and verifying whether generated ships occupy given test positions.
      */
     public static void taskA() {
         Scanner in = new Scanner(System.in);
@@ -51,7 +57,7 @@ public class Tasks {
     }
 
     /**
-     * This task tests the building up of fleets
+     * Executes Task B: Tests fleet building and basic fleet status commands.
      */
     public static void taskB() {
         Scanner in = new Scanner(System.in);
@@ -69,15 +75,14 @@ public class Tasks {
                 default:
                     LOGGER.info("Que comando é esse??? Repete lá ...");
             }
-            // The other commands are unknown in this task
             command = in.next();
         }
         LOGGER.info(GOODBYE_MESSAGE);
     }
 
     /**
-     * This task tests the building up of fleets and takes into consideration the
-     * possibility of cheating
+     * Executes Task C: Tests fleet building with added support for displaying
+     * full board layout via the cheat command.
      */
     public static void taskC() {
         Scanner in = new Scanner(System.in);
@@ -98,17 +103,16 @@ public class Tasks {
                 default:
                     LOGGER.info("Que comando é esse??? Repete lá ...");
             }
-            // The other commands are unknown in this task
             command = in.next();
         }
         LOGGER.info(GOODBYE_MESSAGE);
     }
 
     /**
-     * This task also tests the fighting element of a round of three shots
+     * Executes Task D: Simulates the complete game loop including fleet setup,
+     * firing volleys, tracking hits, invalid/repeated shots, and remaining ships.
      */
     public static void taskD() {
-
         Scanner in = new Scanner(System.in);
         IFleet fleet = null;
         IGame game = null;
@@ -150,16 +154,16 @@ public class Tasks {
     }
 
     /**
-     * This operation allows the build up of a fleet, given user data
+     * Builds a full fleet based on input provided via the scanner.
      *
-     * @param in The scanner to read from
-     * @return The fleet that has been built
+     * @param in the {@link Scanner} instance used to read ship input data
+     * @return the populated {@link Fleet} object
      */
     static Fleet buildFleet(Scanner in) {
         assert in != null;
 
         Fleet fleet = new Fleet();
-        int i = 0; // i represents the total of successfully created ships
+        int i = 0; // i represents the total number of successfully created ships
 
         while (i <= Fleet.FLEET_SIZE) {
             IShip s = readShip(in);
@@ -178,10 +182,10 @@ public class Tasks {
     }
 
     /**
-     * This operation reads data about a ship, build it and returns it
+     * Reads ship attributes from input, instantiates the corresponding ship, and returns it.
      *
-     * @param in The scanner to read from
-     * @return The created ship based on the data that has been read
+     * @param in the {@link Scanner} instance to read from
+     * @return the instantiated {@link Ship}, or {@code null} if inputs are invalid
      */
     static Ship readShip(Scanner in) {
         String shipKind = in.next();
@@ -192,10 +196,10 @@ public class Tasks {
     }
 
     /**
-     * This operation allows reading a position in the map
+     * Reads row and column integers from input and creates a position object.
      *
-     * @param in The scanner to read from
-     * @return The position that has been read
+     * @param in the {@link Scanner} instance to read from
+     * @return the instantiated {@link Position} object
      */
     static Position readPosition(Scanner in) {
         int row = in.nextInt();
@@ -204,11 +208,10 @@ public class Tasks {
     }
 
     /**
-     * This operation allows firing a round of shots (three) over a fleet, in the
-     * context of a game
+     * Fires a volley of shots (defined by {@link #NUMBER_SHOTS}) at the target game.
      *
-     * @param in   The scanner to read from
-     * @param game The context game while fleet is being attacked
+     * @param in   the {@link Scanner} instance to read target coordinates from
+     * @param game the active {@link IGame} instance being targeted
      */
     static void firingRound(Scanner in, IGame game) {
         for (int i = 0; i < NUMBER_SHOTS; i++) {
@@ -217,7 +220,5 @@ public class Tasks {
             if (sh != null)
                 LOGGER.info("Mas... mas... {}s nao sao a prova de bala? :-(", sh.getCategory());
         }
-
     }
-
 }
