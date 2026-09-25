@@ -3,13 +3,31 @@
  */
 package iscteiul.ista.battleship;
 
+/**
+ * A caravel ("Caravela"), a ship that occupies two consecutive cells.
+ * <p>
+ * Starting from the given position, the caravel extends downwards (increasing
+ * row) when heading {@link Compass#NORTH NORTH} or {@link Compass#SOUTH SOUTH},
+ * and to the right (increasing column) when heading {@link Compass#EAST EAST}
+ * or {@link Compass#WEST WEST}.
+ *
+ * @see Ship
+ */
 public class Caravel extends Ship {
+    /** Number of board cells occupied by a caravel. */
     private static final Integer SIZE = 2;
+    /** Category name of this ship, as used by {@link IShip#getCategory()}. */
     private static final String NAME = "Caravela";
 
     /**
-     * @param bearing the bearing where the Caravel heads to
-     * @param pos     initial point for positioning the Caravel
+     * Creates a caravel and computes the cells it occupies.
+     *
+     * @param bearing the bearing where the caravel heads to
+     * @param pos     the upper-left position of the caravel
+     * @throws NullPointerException     if {@code bearing} is {@code null}
+     * @throws IllegalArgumentException if {@code bearing} is not one of
+     *                                  {@code NORTH}, {@code SOUTH},
+     *                                  {@code EAST} or {@code WEST}
      */
     public Caravel(Compass bearing, IPosition pos) throws NullPointerException, IllegalArgumentException {
         super(Caravel.NAME, bearing, pos);
@@ -34,10 +52,10 @@ public class Caravel extends Ship {
 
     }
 
-    /*
-     * (non-Javadoc)
+    /**
+     * Returns the number of cells occupied by a caravel.
      *
-     * @see battleship.Ship#getSize()
+     * @return always {@code 2}
      */
     @Override
     public Integer getSize() {
