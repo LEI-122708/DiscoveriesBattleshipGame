@@ -1,15 +1,20 @@
-/**
- *
- */
 package iscteiul.ista.battleship;
 
+/**
+ * Represents a Frigate ship in the Battleship game.
+ * A Frigate is a linear ship that occupies 4 consecutive positions 
+ * on the board, depending on its bearing.
+ */
 public class Frigate extends Ship {
     private static final Integer SIZE = 4;
     private static final String NAME = "Fragata";
 
     /**
-     * @param bearing
-     * @param pos
+     * Constructs a new Frigate at the specified position and bearing.
+     *
+     * @param bearing the direction the ship is facing (NORTH, SOUTH, EAST, or WEST)
+     * @param pos     the starting position of the ship on the board
+     * @throws IllegalArgumentException if the provided bearing is invalid or null
      */
     public Frigate(Compass bearing, IPosition pos) throws IllegalArgumentException {
         super(Frigate.NAME, bearing, pos);
@@ -25,18 +30,17 @@ public class Frigate extends Ship {
                     getPositions().add(new Position(pos.getRow(), pos.getColumn() + c));
                 break;
             default:
-                throw new IllegalArgumentException("ERROR! invalid bearing for thr frigate");
+                throw new IllegalArgumentException("ERROR! invalid bearing for the frigate");
         }
     }
 
-    /*
-     * (non-Javadoc)
+    /**
+     * Retrieves the size of the Frigate.
      *
-     * @see battleship.Ship#getSize()
+     * @return the number of positions this ship occupies (4)
      */
     @Override
     public Integer getSize() {
         return Frigate.SIZE;
     }
-
 }
