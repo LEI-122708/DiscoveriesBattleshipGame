@@ -1,0 +1,49 @@
+name: Auto Pull and Sync
+
+on:
+  # Executa agendado (ex: todos os dias) ou quando há atualizações na branch principal
+  push:
+    branches:
+      - main
+
+jobs:
+  sync-and-notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Obter o código do repositório
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # 2. Tentar fazer o Pull / Merge automático
+      - name: Attempt Automatic Pull/Merge
+        id: auto_pull
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Exemplo: Tentar atualizar a branch com as alterações de 'upstream' ou 'main'
+          git fetch origin
+          git merge origin/main --no-edit
+
+      # 3. NOTIFICAR O COLEGA CASO O PULL FALHE (ex: conflitos de merge)
+      - name: Notify Responsible Teammate on Failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const responsibleUser = "username_do_teu_colega"; // Substitui pelo username do GitHub do colega
+            
+            const issueTitle = `⚠️ Falha no Pull Automático - Intervenção necessária`;
+            const issueBody = `Olá @${responsibleUser},\n\nO workflow de sincronização/pull automático falhou devido a conflitos de código ou erro na execução.\n\nPor favor, efetua o pull e resolve os conflitos manualmente na tua máquina local.`;
+
+            // Cria uma Issue para notificar diretamente o colega
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: issueTitle,
+              body: issueBody,
+              assignees: [responsibleUser]
+            });
