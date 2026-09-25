@@ -20,7 +20,7 @@ public class Barge extends Ship {
     /**
      * Creates a barge at the given position.
      *
-     * @param bearing the barge bearing; kept for consistency with other ships,
+     *      * @param bearing the barge bearing; kept for consistency with other ships,
      *                it does not change the occupied cell
      * @param pos     the position of the single cell occupied by the barge
      */
